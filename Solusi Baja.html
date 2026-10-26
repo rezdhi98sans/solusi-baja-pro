@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Solusi Baja — Besi &amp; Baja Konstruksi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --steel-900:#1B1F22;
+    --steel-700:#3D454C;
+    --steel-100:#E9E6DE;
+    --paper:#F6F4EF;
+    --amber:#F0A202;
+    --white:#FAFAF7;
+    --line: rgba(27,31,34,.14);
+    --line-inv: rgba(250,250,247,.18);
+    padding-top: env(safe-area-inset-top,0px);
+    padding-bottom: env(safe-area-inset-bottom,0px);
+    box-sizing:border-box;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){ --paper:#201C16; --steel-100:#2A2620; --line: rgba(250,250,247,.14); }
+    :root:not([data-theme="light"]) body{ color:#F1EEE7; }
+    :root:not([data-theme="light"]) .prod, :root:not([data-theme="light"]) .row{ color:#F1EEE7; }
+  }
+  :root[data-theme="dark"]{ --paper:#201C16; --steel-100:#2A2620; --line: rgba(250,250,247,.14); }
+  html{ scroll-padding-top: env(safe-area-inset-top,0px); scroll-behavior:smooth; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--steel-900);
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Oswald',sans-serif; text-transform:none; letter-spacing:.2px;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:var(--steel-900); color:var(--white);
+    padding-top: env(safe-area-inset-top,0px);
+    border-bottom:3px solid var(--amber);
+  }
+  .navrow{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{font-family:'Oswald';font-weight:700;font-size:1.25rem;letter-spacing:.5px;}
+  .brand span{color:var(--amber);}
+  .navlinks{display:flex;gap:28px;font-size:.92rem;}
+  .navlinks a{opacity:.85;text-decoration:none;}
+  .navlinks a:hover{opacity:1;}
+  .navcta{background:var(--amber);color:var(--steel-900);padding:9px 18px;font-weight:600;text-decoration:none;font-size:.9rem;}
+  @media(max-width:760px){.navlinks{display:none;}}
+  /* HERO */
+  .hero{
+    background:var(--steel-900); color:var(--white);
+    padding:88px 0 0;
+    position:relative;
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;padding-bottom:64px;}
+  @media(max-width:840px){.hero .wrap{grid-template-columns:1fr;}}
+  .eyebrow{color:var(--amber);font-family:'IBM Plex Mono';font-size:.82rem;margin-bottom:14px;}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:600;line-height:1.08;max-width:14ch;}
+  .hero p{margin-top:20px;color:#D8D5CC;max-width:46ch;font-size:1.05rem;}
+  .btnrow{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 24px;font-weight:600;text-decoration:none;font-size:.95rem;
+    border:2px solid transparent;
+  }
+  .btn-amber{background:var(--amber);color:var(--steel-900);}
+  .btn-outline{border-color:var(--line-inv);color:var(--white);}
+  .stripe{height:14px;background:repeating-linear-gradient(-45deg,var(--amber) 0 22px,var(--steel-900) 22px 44px);}
+  .heroSide{border-left:3px solid var(--amber);padding-left:28px;}
+  .heroSide .stat{padding:14px 0;border-bottom:1px solid var(--line-inv);}
+  .heroSide .stat:last-child{border-bottom:none;}
+  .stat b{font-family:'Oswald';font-size:1.9rem;font-weight:600;display:block;}
+  .stat span{color:#C9C6BD;font-size:.85rem;}
+  /* SECTION HEADS */
+  section{padding:76px 0;}
+  .sectionhead{max-width:52ch;margin-bottom:44px;}
+  .sectionhead h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;}
+  .sectionhead p{margin-top:12px;color:var(--steel-700);}
+  /* PRODUCTS */
+  .prodgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media(max-width:760px){.prodgrid{grid-template-columns:repeat(2,1fr);}}
+  .prod{
+    background:var(--paper); padding:22px 18px; text-decoration:none; color:inherit;
+    display:flex;flex-direction:column;gap:6px;min-height:104px;justify-content:space-between;
+    transition:background .15s;
+  }
+  .prod:hover{background:var(--steel-100);}
+  .prod .code{font-family:'IBM Plex Mono';font-size:.72rem;color:var(--amber);}
+  .prod .name{font-family:'Oswald';font-weight:600;font-size:1.02rem;}
+  .prod .arrow{font-size:.85rem;color:var(--steel-700);}
+  /* WHY */
+  .whylist{border-top:1px solid var(--line);}
+  .row{display:grid;grid-template-columns:220px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line);}
+  @media(max-width:640px){.row{grid-template-columns:1fr;gap:6px;}}
+  .row h3{font-size:1.1rem;font-weight:600;}
+  .row p{color:var(--steel-700);max-width:56ch;}
+  /* ABOUT (dark) */
+  .about{background:var(--steel-900);color:var(--white);}
+  .about .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;}
+  @media(max-width:840px){.about .wrap{grid-template-columns:1fr;}}
+  .about h2{font-size:clamp(1.6rem,3vw,2.1rem);font-weight:600;}
+  .about p{color:#D8D5CC;margin-top:16px;max-width:52ch;}
+  .aboutstats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-inv);border:1px solid var(--line-inv);align-content:start;}
+  .aboutstats div{background:var(--steel-900);padding:22px;}
+  .aboutstats b{font-family:'Oswald';font-size:1.8rem;font-weight:600;color:var(--amber);display:block;}
+  .aboutstats span{font-size:.82rem;color:#C9C6BD;}
+  /* TESTIMONI */
+  .testigrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:840px){.testigrid{grid-template-columns:1fr;}}
+  .testi{border:1px solid var(--line);padding:24px;background:var(--paper);position:relative;}
+  .testi:before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:var(--amber);}
+  .testi p{font-style:italic;color:var(--steel-900);}
+  .testi cite{display:block;margin-top:16px;font-style:normal;font-family:'IBM Plex Mono';font-size:.8rem;color:var(--steel-700);}
+  /* CONTACT */
+  .contact{background:var(--steel-100);}
+  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+  @media(max-width:840px){.contact .wrap{grid-template-columns:1fr;}}
+  .cbox{border:1px solid var(--line);padding:28px;background:var(--paper);}
+  .cbox h3{font-family:'Oswald';font-weight:600;margin-bottom:6px;}
+  .cbox .mono{color:var(--steel-700);font-size:.88rem;}
+  /* FOOTER */
+  footer{background:var(--steel-900);color:#C9C6BD;padding:32px 0;padding-bottom:calc(32px + env(safe-area-inset-bottom,0px));font-size:.85rem;}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .fab{
+    position:fixed; right:20px; bottom:calc(20px + env(safe-area-inset-bottom,0px)); z-index:60;
+    background:var(--amber); color:var(--steel-900); border-radius:50%;
+    width:56px;height:56px;display:flex;align-items:center;justify-content:center;
+    text-decoration:none; box-shadow:0 6px 18px rgba(0,0,0,.28); font-size:1.5rem;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap navrow">
+    <div class="brand">SOLUSI<span>BAJA</span></div>
+    <div class="navlinks">
+      <a href="#produk">Produk</a>
+      <a href="#keunggulan">Keunggulan</a>
+      <a href="#tentang">Tentang</a>
+      <a href="#kontak">Kontak</a>
+    </div>
+    <a class="navcta" href="https://wa.me/6289530014740?text=Halo%20Solusi%20Baja%2C%20saya%20mau%20tanya%20info%20produk%20besi%20%26%20baja" target="_blank" rel="noopener">Hubungi Kami</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Distributor besi &amp; baja konstruksi</div>
+      <h1>Stok Lengkap, Kirim Cepat ke Lokasi Proyek Anda</h1>
+      <p>Solusi Baja menyediakan besi dan baja untuk kebutuhan konstruksi — dari renovasi rumah hingga proyek skala besar. Pesan langsung lewat WhatsApp, tanpa perlu datang ke toko.</p>
+      <div class="btnrow">
+        <a class="btn btn-amber" href="https://wa.me/6289530014740?text=Halo%20Solusi%20Baja%2C%20saya%20mau%20tanya%20info%20produk%20besi%20%26%20baja" target="_blank" rel="noopener">Pesan via WhatsApp →</a>
+        <a class="btn btn-outline" href="#produk">Lihat Produk</a>
+      </div>
+    </div>
+    <div class="heroSide">
+      <div class="stat"><b>SNI</b><span>Semua produk berstandar nasional</span></div>
+      <div class="stat"><b>16+</b><span>Jenis besi &amp; baja tersedia</span></div>
+      <div class="stat"><b>1 Hari</b><span>Estimasi pengiriman area kota</span></div>
+    </div>
+  </div>
+  <div class="stripe"></div>
+</header>
+
+<section id="produk">
+  <div class="wrap">
+    <div class="sectionhead">
+      <h2>Produk yang Kami Sediakan</h2>
+      <p>Klik produk untuk chat langsung dengan admin dan tanyakan harga, ukuran, atau ketersediaan stok.</p>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+  <div class="prodgrid">
+    <!-- products -->
+  </div>
+  </div>
+</section>
+
+<section id="keunggulan" style="padding-top:0;">
+  <div class="wrap">
+    <div class="sectionhead">
+      <h2>Kenapa Pilih Solusi Baja</h2>
+    </div>
+    <div class="whylist">
+      <div class="row"><h3>Stok siap sedia</h3><p>Persediaan lengkap untuk berbagai ukuran, jadi proyek Anda tidak perlu menunggu lama.</p></div>
+      <div class="row"><h3>Harga bersaing</h3><p>Harga langsung dari distributor, kompetitif untuk pembelian satuan maupun partai besar.</p></div>
+      <div class="row"><h3>Pemesanan lewat WhatsApp</h3><p>Tanya harga, kirim ukuran, dan pesan tanpa harus datang ke toko.</p></div>
+      <div class="row"><h3>Pengiriman ke lokasi proyek</h3><p>Armada pengiriman siap antar ke alamat Anda, termasuk untuk pembelian dalam jumlah kecil.</p></div>
+      <div class="row"><h3>Konsultasi kebutuhan material</h3><p>Tim kami membantu menyesuaikan jenis dan ukuran besi dengan kebutuhan proyek Anda.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="tentang">
+  <div class="wrap">
+    <div>
+      <h2>Tentang Solusi Baja</h2>
+      <p>Solusi Baja adalah penyedia besi dan baja untuk kebutuhan konstruksi, melayani proyek perorangan maupun kontraktor.</p>
+      <p>Kami fokus pada kelengkapan stok, kecepatan pengiriman, dan kemudahan pemesanan — supaya proyek Anda berjalan tanpa hambatan karena menunggu material.</p>
+    </div>
+    <div class="aboutstats">
+      <div><b>Ready</b><span>Stok gudang siap ambil / kirim</span></div>
+      <div><b>WA</b><span>Pemesanan cepat tanpa datang ke toko</span></div>
+      <div><b>Grosir</b><span>Melayani partai kecil &amp; besar</span></div>
+      <div><b>Konsultasi</b><span>Bantuan pemilihan material</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="testimoni">
+  <div class="wrap">
+    <div class="sectionhead"><h2>Kata Pelanggan</h2></div>
+    <div class="testigrid">
+      <div class="testi"><p>"Responnya cepat waktu tanya-tanya di WhatsApp, ukurannya juga lengkap."</p><cite>— Pelanggan proyek renovasi</cite></div>
+      <div class="testi"><p>"Barang dikirim sesuai jadwal, kondisinya bagus dan sesuai pesanan."</p><cite>— Pelanggan kontraktor</cite></div>
+      <div class="testi"><p>"Harga masih bisa dinego untuk pembelian dalam jumlah banyak."</p><cite>— Pelanggan grosir</cite></div>
+    </div>
+    <p class="mono" style="margin-top:18px;font-size:.8rem;color:var(--steel-700);">*Testimoni contoh — ganti dengan ulasan pelanggan asli setelah toko berjalan.</p>
+  </div>
+</section>
+
+<section class="contact" id="kontak">
+  <div class="wrap">
+    <div class="cbox">
+      <h3>Hubungi Kami</h3>
+      <p class="mono">089530014740 (WhatsApp)</p>
+      <div class="btnrow" style="margin-top:18px;">
+        <a class="btn btn-amber" href="https://wa.me/6289530014740?text=Halo%20Solusi%20Baja%2C%20saya%20mau%20tanya%20info%20produk%20besi%20%26%20baja" target="_blank" rel="noopener">Chat Sekarang →</a>
+      </div>
+    </div>
+    <div class="cbox">
+      <h3>Lokasi</h3>
+      <p class="mono">Alamat toko / gudang — lengkapi di sini</p>
+      <p class="mono" style="margin-top:10px;">Jam operasional: Senin–Sabtu, 08.00–17.00</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Solusi Baja — Besi &amp; baja untuk kebutuhan konstruksi Anda</div>
+    <div>2026 © Solusi Baja</div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/6289530014740?text=Halo%20Solusi%20Baja%2C%20saya%20mau%20tanya%20info%20produk%20besi%20%26%20baja" target="_blank" rel="noopener" aria-label="Chat WhatsApp">💬</a>
+
+<script>
+const products = [
+  ["Besi Beton","BJTS / BJTP, ukuran lengkap"],
+  ["Hollow","Pipa kotak untuk rangka & pagar"],
+  ["Wiremesh","Untuk cor lantai & jalan"],
+  ["H-Beam","Konstruksi bentang lebar"],
+  ["IWF","Struktur baja bangunan"],
+  ["UNP","Profil kanal U"],
+  ["CNP","Profil kanal C"],
+  ["Siku","Besi siku sama kaki"],
+  ["Plat Baja","Plat hitam berbagai tebal"],
+  ["Plat Bordes","Plat lantai anti-slip"],
+  ["Pipa Hitam","Pipa besi seamless/ERW"],
+  ["Pipa Galvanis","Tahan karat, untuk luar ruangan"],
+  ["Grating","Panel lantai & tangga industri"],
+  ["Expanded Metal","Untuk pagar & ventilasi"],
+  ["Wire Rod","Kawat baja gulungan"],
+  ["Rel Baja","Untuk kebutuhan industri berat"]
+];
+const grid = document.querySelector('.prodgrid');
+grid.innerHTML = products.map((p,i)=>{
+  const msg = encodeURIComponent(`Halo Solusi Baja, saya mau tanya info produk ${p[0]}`);
+  return `<a class="prod" href="https://wa.me/6289530014740?text=${msg}" target="_blank" rel="noopener">
+    <div><div class="code">${String(i+1).padStart(2,'0')}</div><div class="name">${p[0]}</div></div>
+    <div class="arrow">${p[1]} →</div>
+  </a>`;
+}).join('');
+</script>
+
+</body>
+</html>
